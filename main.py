@@ -30,12 +30,17 @@ def main():
                 return
         dt = clock.tick(60)/1000
         screen.fill("black")
+        
         for thing in updatable:
             thing.update(dt)
+        
+        for thing in asteroids:
+            if player.collision(thing):
+                print("Game Over!")
+                return
+            
         for dthing in drawable:
             dthing.draw(screen)
-        #player.update(dt)
-        #player.draw(screen)
         pygame.display.flip()
 
 
